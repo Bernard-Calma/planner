@@ -11,9 +11,9 @@ export default LandingPage
 
 const styles = {
     container: {
-        border: "1",
+        border: "1px solid red",
     },
     textTest: {
-        fontSize: "100px"
+        fontSize: "10vw"
     }
 }
