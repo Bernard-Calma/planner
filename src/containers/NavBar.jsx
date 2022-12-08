@@ -1,12 +1,12 @@
+import { NavLink } from "react-router-dom"
+
 const NavBar = () => {
 
     return (
 
         <div style={styles.container}>
-            <ul style={styles.navList}>
-                <li>Home</li>
-                <li>Planner</li>
-            </ul>
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/planner">Planner</NavLink>
         </div>
     )
 }
@@ -15,11 +15,10 @@ export default NavBar
 
 const styles = {
     container: {
-        border: "1px solid black"
-    },
-    navList: {
+        // border: "1px solid black",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-    }
+        margin: 5,
+    },
 }

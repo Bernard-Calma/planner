@@ -1,12 +1,17 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import LandingPage from './containers/LandingPage';
 import NavBar from './containers/NavBar';
+import Planner from './containers/Planner';
 
 const App = () => {
   return(
     <div style = {styles.container}>
       <NavBar />
-      <LandingPage />
+      <Routes>
+        <Route path="/" element = {<LandingPage />} />
+        <Route path="planner" element = {<Planner />} /> 
+      </Routes>
     </div>
   )
   
