@@ -21,7 +21,7 @@ const styles = {
         // border: "1px solid black",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        justifyContent: "center",
         margin: 5,
     },
 }

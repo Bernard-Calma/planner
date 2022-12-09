@@ -1,14 +1,11 @@
 const OpenNav= (props) => {
-   
-    const openNavBar = () => {
-        
-    }
     return(
         <div style = {styles.container}>
             <img 
                 src="https://img.icons8.com/fluency/512/menu-rounded.png" 
                 alt="navButton" 
                 style = {styles.navButton}
+                onClick = {props.openNav}
                 />
         </div>
     )

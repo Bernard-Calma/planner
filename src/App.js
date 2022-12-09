@@ -8,6 +8,10 @@ import Planner from './containers/Planner';
 
 const App = () => {
   const [navOpen, setNavOpen] = useState(true)
+
+  const openNav = () => {
+    setNavOpen(!navOpen)
+  }
   return(
     <div style = {styles.container}>
       <NavBar 
@@ -15,7 +19,7 @@ const App = () => {
       />
       <div>
         <OpenNav 
-          
+          openNav = {openNav}
         />
         <Routes>
           <Route path="/" element = {<LandingPage />} />
