@@ -1,10 +1,13 @@
 import { NavLink } from "react-router-dom"
 
-const NavBar = () => {
-
+const NavBar = (props) => {
+    console.log(props.visibility)
     return (
-
-        <div style={styles.container}>
+        <div 
+            style={styles.container}
+            className = "navBar"
+            hidden = {props.navOpen}
+            >
             <NavLink to="/">Home</NavLink>
             <NavLink to="/planner">Planner</NavLink>
         </div>
@@ -17,7 +20,7 @@ const styles = {
     container: {
         // border: "1px solid black",
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         justifyContent: "space-between",
         margin: 5,
     },
