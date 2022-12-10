@@ -19,8 +19,10 @@ const styles = {
     },
     navButton: {
         width: "5%",
+        height: "10%",
         aspectRatio: 1/2,
         objectFit: "contain",
+        border: "1px solid green"
         // mixBlendMode: "color-burn"
     }
 }

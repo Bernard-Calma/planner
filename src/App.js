@@ -17,7 +17,7 @@ const App = () => {
       <NavBar 
         navOpen = {navOpen}
       />
-      <div>
+      <div style = {styles.mainContainer}>
         <OpenNav 
           openNav = {openNav}
         />
@@ -38,8 +38,13 @@ const styles = {
       display: "flex",
       flexDirection: "row",
       height: "99.8vh",
-      width: "98.5hh",
+      width: "99.82%",
       border: "1px solid black",
+  },
+  mainContainer: {
+    width: "100%",
+    height: "100%",
+    border: "1px solid black",
   },
   textTest: {
       fontSize: "10vw"
