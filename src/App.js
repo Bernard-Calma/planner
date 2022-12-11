@@ -5,6 +5,7 @@ import OpenNav from './components/OpenNav';
 import LandingPage from './containers/LandingPage';
 import NavBar from './containers/NavBar';
 import Planner from './containers/Planner';
+import Transactions from './containers/Transactions';
 
 const App = () => {
   const [navOpen, setNavOpen] = useState(true)
@@ -24,6 +25,7 @@ const App = () => {
         <Routes>
           <Route path="/" element = {<LandingPage />} />
           <Route path="planner" element = {<Planner />} /> 
+          <Route path="transactions" element = {<Transactions />} />
         </Routes>
       </div>
     </div>

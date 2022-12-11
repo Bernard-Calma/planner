@@ -9,7 +9,8 @@ const NavBar = (props) => {
             hidden = {props.navOpen}
             >
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/planner">Planner</NavLink>
+            <NavLink to="planner">Planner</NavLink>
+            <NavLink to="transactions">Transactions</NavLink>
         </div>
     )
 }

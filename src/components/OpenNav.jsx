@@ -18,11 +18,11 @@ const styles = {
         
     },
     navButton: {
-        width: "5%",
+        width: "3%",
         height: "10%",
         aspectRatio: 1/2,
         objectFit: "contain",
-        border: "1px solid green"
+        // border: "1px solid green"
         // mixBlendMode: "color-burn"
     }
 }
