@@ -23,7 +23,7 @@ const Summary = () => {
             alignItems: "center",
             margin: "0",
             width: "33.33%",
-            backgroundImage: balance > 0 ? "linear-gradient(darkGreen, #4af241, darkGreen)" : "linear-gradient(red, #f24141, red)",
+            backgroundImage: balance > 0 ? "linear-gradient(#4af241, darkGreen, #4af241)" : "linear-gradient(#f24141, #800800, #f24141)",
             
         },
         container: {
@@ -41,14 +41,14 @@ const Summary = () => {
             margin: "0",
             width: "33.33%",
             height: "100%",
-            backgroundImage: "linear-gradient(#800800, #f24141, #800800)",
+            backgroundImage: "linear-gradient(#f24141, #800800, #f24141)",
         },
         income: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             width: "33.33%",
-            backgroundImage: "linear-gradient(darkGreen, #4af241, darkGreen)",
+            backgroundImage: "linear-gradient(#4af241, darkGreen, #4af241)",
             margin: "0",
             
         },

@@ -4,7 +4,8 @@ const TransactionTitles = () => {
         container: {
             display: "flex",
             justifyContent: "space-around",
-            border: "5px solid black"
+            border: "5px solid black",
+            margin: 10,
         },
         title: {
             color: "black",
@@ -20,7 +21,7 @@ const TransactionTitles = () => {
         <div style={styles.container}>
             <p style={styles.title}>Date</p>
             <p style={styles.title}>Amount</p>
-            <p style={styles.title}>Target</p>
+            <p style={styles.title}>Income/Expense</p>
             <p></p>
         </div>
     )

@@ -41,7 +41,7 @@ const styles = {
       flexDirection: "row",
       height: "99.8vh",
       width: "99.82%",
-      border: "1px solid black",
+      // border: "1px solid black",
   },
   mainContainer: {
     width: "100%",

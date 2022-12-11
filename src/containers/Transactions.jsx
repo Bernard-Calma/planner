@@ -1,8 +1,13 @@
+import { useState } from "react"
 import Summary from "../components/Summary"
+import Transaction from "../components/Transaction"
 import TransactionTitles from "../components/TransactionTitles"
+
+import transactions from "../models/transcations"
 
 const Transactions = () => {
 
+    const [transactionList, setTransactionList] = useState(transactions)
     const styles = {
         container: {
             width: "100%",
@@ -23,6 +28,12 @@ const Transactions = () => {
             <Summary />
             <div style = {styles.transactionsContainer}>
                 <TransactionTitles />
+                {
+                    transactionList.map((transaction) => 
+                        <Transaction transaction = {transaction}/>
+                    )
+                }
+                
             </div>
         </div>
     )
