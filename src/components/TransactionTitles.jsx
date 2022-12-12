@@ -21,7 +21,7 @@ const TransactionTitles = () => {
         <div style={styles.container}>
             <p style={styles.title}>Date</p>
             <p style={styles.title}>Amount</p>
-            <p style={styles.title}>Income/Expense</p>
+            <p style={styles.title}>Description</p>
             <p></p>
         </div>
     )
