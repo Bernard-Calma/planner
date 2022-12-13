@@ -44,11 +44,17 @@
 
 /* Add Form */
 /* Amount Input Styles */
-.amount:focus {
+#amount:focus {
   outline: none !important;
 }
-
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
 	-webkit-appearance: none;
 } 
+
+/* Add Submit Button*/
+#submitAdd {
+  font-size: larger;
+  background-color: black;
+  border-radius: 20px;
+}

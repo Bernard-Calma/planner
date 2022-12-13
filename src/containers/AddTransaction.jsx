@@ -13,22 +13,35 @@ const AddTransaction = () => {
     const styles = {
         container: {
             display: "flex",
+            flexDirection: "row",
             justifyContent: "center",
             color: "black",
-            textAlign: "center"
+            textAlign: "center",
+            margin: 5,
+            border: "1px solid",
+            borderRadius: "20px",
+            padding: 20,
+            backgroundColor: "gray"
         },
         currencyContainer: {
             border: "1px solid",
-            width: "40%",
-            height: "4hh",
+            height: "5vh",
+            width: "100%",
             display: "flex",
-            overflow: "hidden"
+            alignSelf: "center",
+            overflow: "hidden",
+            width: "50%",
+            alignSelf: "center",
+            backgroundColor: "white"
+            
         },
         currencyInput: {
             fontSize: "4vw", 
             padding: 0,
             borderLeft: 0,
-            border: "unset",
+            border: "none",
+            
+            
         },
         currencySybmol: {
             position: "relative", 
@@ -41,17 +54,32 @@ const AddTransaction = () => {
         },
         form: {
             display: "flex",
+            height: "80vh",
             flexDirection: "column",
-            fontSize: "10vw"
+            justifyContent: "space-between",
+            fontSize: "5vw"
         },
         input: {
             fontSize: "3vh", 
+            width: "50%",
+            alignSelf: "center",
+            marginLeft: 10
         },
         inputCheckbox: {
             alignSelf: "center",
             width: "5vh",
             height: "5vh"
-        }
+        },
+        inputDiv: {
+            margin: 10,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginBottom: 20,
+        },
+        submitDiv: {
+            justifyContent: "center",
+        },
     }
 
     const handleChange = (event) => {
@@ -66,17 +94,17 @@ const AddTransaction = () => {
     return(
         <div style = {styles.container}>
             <form style = {styles.form}>
-                <div>
+                <div style = {styles.inputDiv}>
                     <label htmlFor= "Date">Date: </label>
                     <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange}/>
                 </div>
                 
-                <div>
+                <div style = {styles.inputDiv}>
                     <label htmlFor= "description">Description: </label>
                     <input style = {styles.input} type = "text" id = "description" name = "description" value = {transaction.description} onChange = {handleChange}/>
                 </div>
                 
-                <div>
+                <div style = {styles.inputDiv}>
                     <label htmlFor= "number">Amount: </label>
                     <div style = {styles.currencyContainer}>
                         <span style={styles.currencySybmol}>$</span>
@@ -87,11 +115,14 @@ const AddTransaction = () => {
                     </div>
                 </div>
 
-                <div>
+                <div style = {styles.inputDiv}>
                     <label htmlFor= "income">Income: </label>
                     <input style = {styles.inputCheckbox} type = "checkbox" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
                 </div>
                 
+                <div className = "submitDiv">
+                    <input type = "submit" id = "submitAdd" name="submitAdd" value = "submit" />
+                </div>
             </form>
         </div>
     )
