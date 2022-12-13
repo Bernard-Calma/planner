@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import OpenNav from './components/OpenNav';
+import AddTransaction from './containers/AddTransaction';
 import LandingPage from './containers/LandingPage';
 import NavBar from './containers/NavBar';
 import Planner from './containers/Planner';
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/" element = {<LandingPage />} />
           <Route path="planner" element = {<Planner />} /> 
           <Route path="transactions" element = {<Transactions />} />
+          <Route path="transactions/add" element = {<AddTransaction />} />
         </Routes>
       </div>
     </div>
