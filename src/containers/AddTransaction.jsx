@@ -15,10 +15,11 @@ const AddTransaction = () => {
             display: "flex",
             justifyContent: "center",
             color: "black",
-
+            textAlign: "center"
         },
         currencyContainer: {
             border: "1px solid",
+            width: "40%",
             height: "4hh",
             display: "flex",
             overflow: "hidden"
@@ -57,6 +58,7 @@ const AddTransaction = () => {
         
         event.preventDefault()
         if(event.target.name === "amount" && event.target.value > 9000000000) return
+        if(event.target.value.indexOf('.') > -1 && (event.target.value.indexOf('.') + 3 < event.target.value.length) ) return
         setTransaction({...transaction, [event.target.name]: event.target.value})
         console.log(event.target.value)
         
@@ -64,22 +66,32 @@ const AddTransaction = () => {
     return(
         <div style = {styles.container}>
             <form style = {styles.form}>
-                <label htmlFor= "Date">Date: </label>
-                <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange}/>
-
-                <label htmlFor= "number">Amount: </label>
-                <div style = {styles.currencyContainer}>
-                    <span style={styles.currencySybmol}>$</span>
-                    <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {transaction.amount} 
-                        onChange = {handleChange}
-                        onKeyDown = {event => ["e","-","=","."].includes(event.key) && event.preventDefault()}
-                        />
+                <div>
+                    <label htmlFor= "Date">Date: </label>
+                    <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange}/>
                 </div>
-                                
-                <label htmlFor= "description">Description: </label>
-                <input style = {styles.input} type = "text" id = "description" name = "description" value = {transaction.description} onChange = {handleChange}/>
-                <label htmlFor= "income">Income: </label>
-                <input style = {styles.inputCheckbox} type = "checkbox" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                
+                <div>
+                    <label htmlFor= "description">Description: </label>
+                    <input style = {styles.input} type = "text" id = "description" name = "description" value = {transaction.description} onChange = {handleChange}/>
+                </div>
+                
+                <div>
+                    <label htmlFor= "number">Amount: </label>
+                    <div style = {styles.currencyContainer}>
+                        <span style={styles.currencySybmol}>$</span>
+                        <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {transaction.amount} 
+                            onChange = {handleChange}
+                            onKeyDown = {event => ["e","-","="].includes(event.key) && event.preventDefault()}
+                            />
+                    </div>
+                </div>
+
+                <div>
+                    <label htmlFor= "income">Income: </label>
+                    <input style = {styles.inputCheckbox} type = "checkbox" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                </div>
+                
             </form>
         </div>
     )
