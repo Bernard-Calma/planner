@@ -49,6 +49,7 @@ const styles = {
     width: "100%",
     height: "100%",
     border: "1px solid black",
+    backgroundColor: "rgb(245, 242, 242)"
   },
   textTest: {
       fontSize: "10vw"

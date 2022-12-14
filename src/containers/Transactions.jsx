@@ -15,7 +15,6 @@ const Transactions = () => {
             width: "100%",
             height: "88%",
             border: "1px solid red",
-            color: "white",
             fontSize: "2vw",
             fontWeight: "700"
         },

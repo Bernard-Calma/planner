@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 
 import account from "../models/account"
+import BalanceBar from "./BalanceBar"
 
 
 const Summary = () => {
@@ -8,13 +9,16 @@ const Summary = () => {
     const styles = {
         accountSummary: {
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItem: "stretch",
-            border: "1px solid blue",
-            width: "100%",
-            height: "5%",
+            // border: "1px solid blue",
+            width: "98%",
+            height: "20%",
             textAlign: "center",
-            margin: "0 auto"
+            margin: "5px auto",
+            backgroundColor: "white",
+            boxShadow: "5px 5px 10px rgb(227, 222, 222)",
             
         },
         balance: {
@@ -22,39 +26,38 @@ const Summary = () => {
             justifyContent: "center",
             alignItems: "center",
             margin: "0",
-            width: "33.33%",
-            backgroundImage: balance > 0 ? "linear-gradient(#4af241, darkGreen, #4af241)" : "linear-gradient(#f24141, #800800, #f24141)",
+            fontSize: "5vh",
             
         },
-        container: {
-            width: "100%",
-            height: "88%",
-            border: "1px solid red",
-            color: "white",
-            fontSize: "2vw",
-            fontWeight: "700"
+        buttomSummary: {
+            display: "flex",
+            flexDirection: "row",
+
         },
         expenses: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             margin: "0",
-            width: "33.33%",
-            height: "100%",
-            backgroundImage: "linear-gradient(#f24141, #800800, #f24141)",
+            fontSize: "5vh",
         },
         income: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            width: "33.33%",
-            backgroundImage: "linear-gradient(#4af241, darkGreen, #4af241)",
             margin: "0",
+            fontSize: "5vh",
             
         },
-        textTest: {
-            fontSize: "10vw"
-        }, 
+        summaryContainer: {
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            // border: "1px solid blue",
+            textAlign: "center",
+            width: "33.33%",
+            fontSize: "1vh",
+        }
     }
 
     const getBalance = () => {
@@ -67,11 +70,26 @@ const Summary = () => {
 
     return(
     <div style = {styles.accountSummary}>
-        <p style = {styles.income}>Income: ${account.totalIncome}</p>
+        <div style = {styles.summaryContainer}>
+            <p style = {styles.balance}>${balance}</p>
+            <p>Balance</p>
+            <BalanceBar 
+                totalIncome = {account.totalIncome}
+                balance = {balance}
+            />
+        </div>
         
-        <p style = {styles.expenses}>Expenses: ${account.totalExpense}</p>
-
-        <p style = {styles.balance}>Balance: ${balance}</p>
+        <div style={styles.buttomSummary}>
+            <div style = {styles.summaryContainer}>
+                <p style = {styles.income}>${account.totalIncome}</p>
+                <p>Income</p>
+            </div>
+            <div style = {styles.summaryContainer}>
+                <p style = {styles.expenses}>${account.totalExpense}</p>
+                <p>Expenses</p>
+            </div>
+            
+        </div>  
     </div>
     )
 }
