@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import './App.css';
 import OpenNav from './components/OpenNav';
 import AddTransaction from './containers/AddTransaction';
@@ -20,9 +20,13 @@ const App = () => {
         navOpen = {navOpen}
       />
       <div style = {styles.mainContainer}>
+        <div>
+          Header
+        </div>
         <OpenNav 
           openNav = {openNav}
         />
+        <NavLink to="add">Add Transaction</NavLink>
         <Routes>
           <Route path="/" element = {<LandingPage />} />
           <Route path="planner" element = {<Planner />} /> 
@@ -48,7 +52,7 @@ const styles = {
   mainContainer: {
     width: "100%",
     height: "100%",
-    border: "1px solid black",
+    // border: "1px solid black",
     backgroundColor: "rgb(245, 242, 242)"
   },
   textTest: {

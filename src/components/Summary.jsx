@@ -32,21 +32,21 @@ const Summary = () => {
         buttomSummary: {
             display: "flex",
             flexDirection: "row",
-
+            justifyContent: "space-between"
         },
         expenses: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             margin: "0",
-            fontSize: "5vh",
+            fontSize: "3vh",
         },
         income: {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             margin: "0",
-            fontSize: "5vh",
+            fontSize: "3vh",
             
         },
         summaryContainer: {
@@ -71,25 +71,24 @@ const Summary = () => {
     return(
     <div style = {styles.accountSummary}>
         <div style = {styles.summaryContainer}>
-            <p style = {styles.balance}>${balance}</p>
-            <p>Balance</p>
-            <BalanceBar 
-                totalIncome = {account.totalIncome}
-                balance = {balance}
-            />
+            {/* <p style = {styles.balance}>${balance}</p>
+            <p>Balance</p> */}
         </div>
-        
         <div style={styles.buttomSummary}>
             <div style = {styles.summaryContainer}>
-                <p style = {styles.income}>${account.totalIncome}</p>
+                <p style = {styles.income}>${account.totalIncome.toFixed(2)}</p>
                 <p>Income</p>
             </div>
             <div style = {styles.summaryContainer}>
-                <p style = {styles.expenses}>${account.totalExpense}</p>
+                <p style = {styles.expenses}>${account.totalExpense.toFixed(2)}</p>
                 <p>Expenses</p>
             </div>
-            
         </div>  
+        <BalanceBar 
+            totalIncome = {account.totalIncome}
+            balance = {balance}
+        />
+
     </div>
     )
 }

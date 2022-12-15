@@ -12,10 +12,8 @@ const Transaction = (props) => {
             margin: 10,
             boxShadow: "5px 5px 5px black",
             borderRadius: 20,
-            backgroundColor: transaction.income ? "green" : "#800800"
         },
         title: {
-            color: transaction.income ? "black" : "white",
             width: "100%",
             height: "inherit",
             textAlign: "center",

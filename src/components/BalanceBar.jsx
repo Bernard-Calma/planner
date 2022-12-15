@@ -5,45 +5,31 @@ const BalanceBar = (props) => {
 
     const styles = {
         container: {
-
+            marginLeft: "1vh",
+            marginRight: "1vh",
+        },
+        balanceText: {
+            margin: "auto",
+            color: "white",
+            fontSize: "3vw"
         },
         barContainer: {
-            height: "15vh",
+            display: "flex",
+            height: "5vh",
             backgroundColor: "green",
-            backgroundImage: `linear-gradient(to right, rgb() ${100 - percentage}%, rgb(240, 60, 60) ${percentage}%)`
+            backgroundImage: `linear-gradient(to right, rgb(4, 189, 7) ${100 - percentage}%, rgb(240, 60, 60) ${percentage}%)`,
+            alignItems: "center",
+            borderRadius: 30,
+            boxShadow: "1px 1px 5px 1px"
         },
-        circleContainer: {
-            width: "100%", 
-            height: "100%",
-            fill: "none",
-            stroke: "#eee",
-            strokeWidth: 3.8,
-        },
-        outerCircle: {
-            cx:"10",
-            cy:"10",
-            r:"50",
-            fill:"none",
-            // stroke: "red",
-            strokeWidth: 10,
-            strokeLinecap: "round" ,
-            animation: "progress 1s ease-out forwards"
-        }
-    }
 
+    }
+    
     return(
         <div style={styles.container}>
-            {/* <div style={styles.barContainer}>{props.balance.totalExpense}%</div> */}
-            <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-
-                <defs>
-                    <linearGradient id="grad1">
-                    <stop offset="0%" stop-color="red"/>
-                    <stop offset="100%" stop-color="red" stop-opacity="0" />
-                    </linearGradient>
-                </defs>
-            <circle  style = {styles.outerCircle}/>
-            </svg>
+            <div style={styles.barContainer}>
+                <p style={styles.balanceText}>${props.balance.toFixed(2)}</p>
+            </div>
         </div>
     )
 }
