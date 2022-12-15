@@ -24,7 +24,7 @@ const Header = (props) => {
             <OpenNav 
             openNav = {props.openNav}
             />
-            <NavLink to="add" style={Styles.text}>+</NavLink>
+            <NavLink to="transactions/add" style={Styles.text}>+</NavLink>
         </div>
     )
 }
