@@ -1,15 +1,17 @@
-import { useState } from "react"
-import { NavLink } from "react-router-dom"
+import { useEffect, useState } from "react"
 import Summary from "../components/Summary"
 import Transaction from "../components/Transaction"
 import TransactionTitles from "../components/TransactionTitles"
-
 import transactions from "../models/transcations"
-import AddTransaction from "./AddTransaction"
 
 const Transactions = () => {
 
     const [transactionList, setTransactionList] = useState(transactions)
+    const [summary, setSummary] = useState({
+        totalIncome: 0,
+        totalExpense: 0,
+        balance: 0
+    })
     const styles = {
         container: {
             width: "100%",
@@ -28,15 +30,38 @@ const Transactions = () => {
             overflow: "scroll"
         },
     }
+    useEffect( ()=>{
+        // console.log(transactionList)
+        setSummary(()=>{
+            let income = 0
+            let expense = 0
+            let balance = 0
+            transactionList.forEach(transaction => {
+                if(transaction.income) income += transaction.amount 
+                else expense += transaction.amount
+            })
+            balance = income - expense
+            return {
+                totalIncome: income,
+                totalExpense: expense,
+                balance: balance
+            };
+        })
 
+    },[])
+    console.log("Summary Upper", summary)
     return(
         <div style = {styles.container}>
-            <Summary />
+            <Summary 
+                summary = {summary}
+            />
             <div style = {styles.transactionsContainer} className = "transactionsContainer">
                 <TransactionTitles />
                 {
                     transactionList.map((transaction) => 
-                        <Transaction transaction = {transaction}/>
+                        <Transaction 
+                        key = {transaction.id}
+                        transaction = {transaction}/>
                     )
                 }
             </div>

@@ -4,8 +4,8 @@ import account from "../models/account"
 import BalanceBar from "./BalanceBar"
 
 
-const Summary = () => {
-    const [balance, setBalance] = useState(0)
+const Summary = (props) => {
+    console.log("Props", props)
     const styles = {
         accountSummary: {
             display: "flex",
@@ -59,15 +59,6 @@ const Summary = () => {
             fontSize: "1vh",
         }
     }
-
-    const getBalance = () => {
-        setBalance(account.totalIncome - account.totalExpense)
-    }
-
-    useEffect(() => {
-        getBalance()
-    }, [])
-
     return(
     <div style = {styles.accountSummary}>
         <div style = {styles.summaryContainer}>
@@ -76,17 +67,17 @@ const Summary = () => {
         </div>
         <div style={styles.buttomSummary}>
             <div style = {styles.summaryContainer}>
-                <p style = {styles.income}>${account.totalIncome.toFixed(2)}</p>
+                <p style = {styles.income}>${props.summary.totalIncome.toFixed(2)}</p>
                 <p>Income</p>
             </div>
             <div style = {styles.summaryContainer}>
-                <p style = {styles.expenses}>${account.totalExpense.toFixed(2)}</p>
+                <p style = {styles.expenses}>${props.summary.totalExpense.toFixed(2)}</p>
                 <p>Expenses</p>
             </div>
         </div>  
         <BalanceBar 
-            totalIncome = {account.totalIncome}
-            balance = {balance}
+            totalIncome = {props.summary.totalIncome}
+            balance = {props.summary.balance}
         />
 
     </div>
