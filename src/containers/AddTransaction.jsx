@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const AddTransaction = () => {
+    const navigate = useNavigate()
 
     const [transaction, setTransaction] = useState({
         id: 0,
@@ -91,9 +93,16 @@ const AddTransaction = () => {
         console.log(event.target.value)
         
     }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log("submit")
+        navigate("/transactions")
+    }
+
     return(
         <div style = {styles.container}>
-            <form style = {styles.form}>
+            <form style = {styles.form} onSubmit={handleSubmit}>
                 <div style = {styles.inputDiv}>
                     <label htmlFor= "Date">Date: </label>
                     <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange}/>
