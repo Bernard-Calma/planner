@@ -3,6 +3,7 @@ import { NavLink, Route, Routes } from 'react-router-dom';
 import './App.css';
 import OpenNav from './components/OpenNav';
 import AddTransaction from './containers/AddTransaction';
+import Header from './containers/Header';
 import LandingPage from './containers/LandingPage';
 import NavBar from './containers/NavBar';
 import Planner from './containers/Planner';
@@ -20,13 +21,7 @@ const App = () => {
         navOpen = {navOpen}
       />
       <div style = {styles.mainContainer}>
-        <div>
-          Header
-        </div>
-        <OpenNav 
-          openNav = {openNav}
-        />
-        <NavLink to="add">Add Transaction</NavLink>
+        <Header openNav = {openNav}/>
         <Routes>
           <Route path="/" element = {<LandingPage />} />
           <Route path="planner" element = {<Planner />} /> 
