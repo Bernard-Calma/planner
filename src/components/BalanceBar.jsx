@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react"
-
 const BalanceBar = (props) => {
-    const [percentage, setPercentage] = useState(props.balance % props.totalIncome)
-
+    // console.log(percentage)
     const styles = {
         container: {
             marginLeft: "1vh",
@@ -17,7 +14,7 @@ const BalanceBar = (props) => {
             display: "flex",
             height: "5vh",
             backgroundColor: "green",
-            backgroundImage: `linear-gradient(to right, rgb(4, 189, 7) ${100 - percentage}%, rgb(240, 60, 60) ${percentage}%)`,
+            backgroundImage: `linear-gradient(to right, rgb(4, 189, 7) ${100 - (props.summary.totalExpense / props.summary.totalIncome * 100)}%, rgb(240, 60, 60) ${100 - (props.summary.totalExpense / props.summary.totalIncome * 100)}%)`,
             alignItems: "center",
             borderRadius: 30,
             boxShadow: "1px 1px 5px 1px"
@@ -28,7 +25,7 @@ const BalanceBar = (props) => {
     return(
         <div style={styles.container}>
             <div style={styles.barContainer}>
-                <p style={styles.balanceText}>${props.balance.toFixed(2)}</p>
+                <p style={styles.balanceText}>${props.summary.balance.toFixed(2)}</p>
             </div>
         </div>
     )

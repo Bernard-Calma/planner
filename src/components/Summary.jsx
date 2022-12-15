@@ -1,11 +1,7 @@
-import { useEffect, useState } from "react"
-
-import account from "../models/account"
 import BalanceBar from "./BalanceBar"
 
-
 const Summary = (props) => {
-    console.log("Props", props)
+    // console.log("Props", props)
     const styles = {
         accountSummary: {
             display: "flex",
@@ -76,8 +72,7 @@ const Summary = (props) => {
             </div>
         </div>  
         <BalanceBar 
-            totalIncome = {props.summary.totalIncome}
-            balance = {props.summary.balance}
+            summary = {props.summary}
         />
 
     </div>

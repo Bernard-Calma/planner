@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import OpenNav from './components/OpenNav';
 import AddTransaction from './containers/AddTransaction';
 import Header from './containers/Header';
 import LandingPage from './containers/LandingPage';

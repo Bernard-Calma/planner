@@ -16,7 +16,7 @@ const transactions = [
     {
         id: 3,
         date: "07/10",
-        amount: 100.00,
+        amount: 200.00,
         income: true,
         description: "uber"
     },

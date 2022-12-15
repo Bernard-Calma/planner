@@ -49,7 +49,7 @@ const Transactions = () => {
         })
 
     },[])
-    console.log("Summary Upper", summary)
+    // console.log("Summary Upper", summary)
     return(
         <div style = {styles.container}>
             <Summary 

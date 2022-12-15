@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom"
 
 const NavBar = (props) => {
-    console.log(props.visibility)
     return (
         <div 
             style={styles.container}
