@@ -63,3 +63,21 @@ input[type=number]::-webkit-outer-spin-button {
 .transactionsContainer::-webkit-scrollbar {
   display: none;
 }
+
+.navBar[hidden] {
+  opacity: 0;
+  -webkit-transition:  height 0.5s ease;
+  -moz-transition: height 0.5s ease;
+  -ms-transition: height 0.5s ease;
+  -o-transition: height 0.5s ease;
+  transition: height 0.5s ease;
+  transition-delay:0.2s;}
+
+  .navBar {
+    opacity: 1;
+    -webkit-transition:  height 0.5s ease;
+    -moz-transition: height 0.5s ease;
+    -ms-transition: height 0.5s ease;
+    -o-transition: height 0.5s ease;
+    transition: height 0.5s ease;
+    transition-delay:0.2s;}

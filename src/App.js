@@ -15,11 +15,11 @@ const App = () => {
     setNavOpen(!navOpen)
   }
   return(
-    <div style = {styles.container}>
+    <div style = {styles.container} className = "appContainer">
       <NavBar 
         navOpen = {navOpen}
       />
-      <div style = {styles.mainContainer}>
+      <div style = {styles.mainContainer} onTouchStart = {() => setNavOpen(true)} onMouseDown = {() => setNavOpen(true)}>
         <Header openNav = {openNav}/>
         <Routes>
           <Route path="/" element = {<LandingPage />} />
@@ -42,12 +42,14 @@ const styles = {
       height: "99.8vh",
       width: "99.82%",
       // border: "1px solid black",
+      overflow: "hidden"
+      
   },
   mainContainer: {
     width: "100%",
     height: "100%",
     // border: "1px solid black",
-    backgroundColor: "rgb(245, 242, 242)"
+    backgroundColor: "rgb(245, 242, 242)",
   },
   textTest: {
       fontSize: "10vw"

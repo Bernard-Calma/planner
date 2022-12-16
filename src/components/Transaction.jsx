@@ -3,7 +3,7 @@ import { useState } from "react"
 const Transaction = (props) => {
     
     const [transaction, setTransaction] = useState(props.transaction)
-
+    const [show, setShow] = useState(false)
     const styles = {
         container: {
             display: "flex",
@@ -22,11 +22,21 @@ const Transaction = (props) => {
     }
 
     return (
-        <div style = {styles.container}>
-            <p style={styles.title}>{transaction.date}</p>
-            <p style={styles.title}>${transaction.amount.toFixed(2)}</p>
-            <p style={styles.title}>{transaction.description}</p>
+        <div>
+            <div style = {styles.container}>
+                <p style={styles.title}>{transaction.date}</p>
+                <p style={styles.title}>${transaction.amount.toFixed(2)}</p>
+                <p style={styles.title}>{transaction.description}</p>
+            </div>
+            {
+                show &&
+                <div>
+                    menu
+                </div>
+            }
+            
         </div>
+        
     )
 }
 
