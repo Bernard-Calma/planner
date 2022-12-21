@@ -24,7 +24,7 @@ const Transaction = (props) => {
     return (
         <div>
             <div style = {styles.container}>
-                <p style={styles.title}>{transaction.date}</p>
+                <p style={styles.title}>{new Date(transaction.date).toLocaleDateString().slice(0, -5)}</p>
                 <p style={styles.title}>${transaction.amount.toFixed(2)}</p>
                 <p style={styles.title}>{transaction.description}</p>
             </div>

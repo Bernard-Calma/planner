@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import transactions from "../models/transcations"
 
 const AddTransaction = () => {
     const navigate = useNavigate()
@@ -90,13 +91,16 @@ const AddTransaction = () => {
         if(event.target.name === "amount" && event.target.value > 9000000000) return
         if(event.target.value.indexOf('.') > -1 && (event.target.value.indexOf('.') + 3 < event.target.value.length) ) return
         setTransaction({...transaction, [event.target.name]: event.target.value})
-        console.log(event.target.value)
+        // console.log(event.target.value)
         
     }
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log("submit")
+        // console.log("Transaction: ", transaction)
+        // console.log("Transactions: ", transactions)
+        const transactionToAdd = {...transaction, amount: parseInt(transaction.amount), date: transaction.date}
+        transactions.push(transactionToAdd)
         navigate("/transactions")
     }
 
@@ -114,7 +118,7 @@ const AddTransaction = () => {
                 </div>
                 
                 <div style = {styles.inputDiv}>
-                    <label htmlFor= "number">Amount: </label>
+                    <label htmlFor= "amount">Amount: </label>
                     <div style = {styles.currencyContainer}>
                         <span style={styles.currencySybmol}>$</span>
                         <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {transaction.amount} 
