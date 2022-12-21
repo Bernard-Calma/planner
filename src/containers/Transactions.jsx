@@ -51,14 +51,15 @@ const Transactions = (props) => {
     },[])
     // console.log("Summary Upper", summary)
     return(
-        <div style = {styles.container}>
+        <div style = {styles.container}> 
             <Summary 
                 summary = {summary}
             />
             <div style = {styles.transactionsContainer} className = "transactionsContainer">
                 <TransactionTitles />
                 {
-                    transactionList.map((transaction) => 
+                    
+                    transactionList.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse().map((transaction) => 
                         <Transaction 
                         key = {transaction.id}
                         transaction = {transaction}/>
