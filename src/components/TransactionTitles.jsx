@@ -22,7 +22,7 @@ const TransactionTitles = () => {
             <p style={styles.title}>Date</p>
             <p style={styles.title}>Amount</p>
             <p style={styles.title}>Description</p>
-            <p></p>
+            <p style={styles.title}>Type</p>
         </div>
     )
 }
