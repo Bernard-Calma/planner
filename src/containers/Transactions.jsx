@@ -4,9 +4,9 @@ import Transaction from "../components/Transaction"
 import TransactionTitles from "../components/TransactionTitles"
 import transactions from "../models/transcations"
 
-const Transactions = () => {
+const Transactions = (props) => {
 
-    const [transactionList, setTransactionList] = useState(transactions)
+    const [transactionList, setTransactionList] = useState( props.user.username === "Guest" ? transactions : [])
     const [summary, setSummary] = useState({
         totalIncome: 0,
         totalExpense: 0,

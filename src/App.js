@@ -10,6 +10,10 @@ import Transactions from './containers/Transactions';
 
 const App = () => {
   const [navOpen, setNavOpen] = useState(true)
+  const [user, setUser] = useState({
+    user: {ObjectID: "Guest"},
+    username: "Guest"
+  })
 
   const openNav = () => {
     setNavOpen(!navOpen)
@@ -24,7 +28,7 @@ const App = () => {
         <Routes>
           <Route path="/" element = {<LandingPage />} />
           <Route path="planner" element = {<Planner />} /> 
-          <Route path="transactions" element = {<Transactions />} />
+          <Route path="transactions" element = {<Transactions user = {user}/>} />
           <Route path="transactions/add" element = {<AddTransaction />} />
         </Routes>
       </div>
