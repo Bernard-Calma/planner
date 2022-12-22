@@ -130,7 +130,10 @@ const AddTransaction = () => {
 
                 <div style = {styles.inputDiv}>
                     <label htmlFor= "income">Income: </label>
-                    <input style = {styles.inputCheckbox} type = "checkbox" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                    <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                    <label htmlFor="expense">Expense: </label>
+                    <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                   
                 </div>
                 
                 <div className = "submitDiv">

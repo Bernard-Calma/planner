@@ -28,7 +28,7 @@ const EditTransaction = () => {
             backgroundColor: "gray",
             width: "95%",
             marginTop: -10,
-            boxShadow: "0px 5px 10px black"
+            boxShadow: "0px 5px 10px black",
         },
         currencyContainer: {
             border: "1px solid",
@@ -105,7 +105,7 @@ const EditTransaction = () => {
     }
 
     return(
-        <div style = {styles.container}>
+        <div style = {styles.container} className = "editContainer">
             <form style = {styles.form} onSubmit={handleSubmit}>
                 <div>
                     <div style = {styles.inputDiv}>
@@ -131,7 +131,9 @@ const EditTransaction = () => {
 
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "income">Income: </label>
-                        <input style = {styles.inputCheckbox} type = "checkbox" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                        <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                        <label htmlFor="expense">Expense: </label>
+                        <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "income" value = {transaction.income} onChange = {handleChange}/>
                     </div>
                 </div>
                 
