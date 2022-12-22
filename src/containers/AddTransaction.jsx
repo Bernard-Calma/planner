@@ -12,7 +12,7 @@ const AddTransaction = () => {
         type: null,
         description: ""
     })
-
+    console.log(transaction)
     const styles = {
         container: {
             display: "flex",
@@ -106,7 +106,7 @@ const AddTransaction = () => {
 
     const handleOptionChange = (event) => {
         let { name, value} = event.target
-        console.log( {name, value})
+        setTransaction({...transaction, [name]: value})
     }
 
     return(
@@ -136,9 +136,9 @@ const AddTransaction = () => {
 
                 <div style = {styles.inputDiv}>
                     <label htmlFor= "income">Income: </label>
-                    <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "income" value = "income" onChange = {handleOptionChange} required/>
+                    <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "type" value = "income" onChange = {handleOptionChange} required/>
                     <label htmlFor="expense">Expense: </label>
-                    <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "income" value = "expense" onChange = {handleOptionChange} required/>
+                    <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "type" value = "expense" onChange = {handleOptionChange} required/>
                    
                 </div>
                 
