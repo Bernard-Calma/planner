@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import transactions from "../models/transcations"
 
-const AddTransaction = () => {
+const EditTransaction = () => {
     const navigate = useNavigate()
 
     const [transaction, setTransaction] = useState({
@@ -21,15 +21,17 @@ const AddTransaction = () => {
             color: "black",
             textAlign: "center",
             margin: 5,
+            margin: "auto",
             border: "1px solid",
-            borderRadius: "20px",
-            padding: 20,
-            backgroundColor: "gray"
+            borderBottomLeftRadius: "20px",
+            borderBottomRightRadius: "20px",
+            backgroundColor: "gray",
+            width: "95%",
+            marginTop: -10,
+            boxShadow: "0px 5px 10px black"
         },
         currencyContainer: {
             border: "1px solid",
-            height: "5vh",
-            width: "100%",
             display: "flex",
             alignSelf: "center",
             overflow: "hidden",
@@ -39,7 +41,7 @@ const AddTransaction = () => {
             
         },
         currencyInput: {
-            fontSize: "4vw", 
+            fontSize: "2vw", 
             padding: 0,
             borderLeft: 0,
             border: "none",
@@ -49,7 +51,7 @@ const AddTransaction = () => {
         currencySybmol: {
             position: "relative", 
             border: "unset",
-            fontSize: "3vw",
+            fontSize: "2vw",
             alignSelf: "center"
             // paddingBottom: 7,
             // paddingTop: 25,
@@ -57,31 +59,29 @@ const AddTransaction = () => {
         },
         form: {
             display: "flex",
-            height: "80vh",
-            flexDirection: "column",
+            flexDirection: "row",
             justifyContent: "space-between",
-            fontSize: "5vw"
+            fontSize: "2vw"
         },
         input: {
-            fontSize: "3vh", 
+            fontSize: "2vh", 
             width: "50%",
             alignSelf: "center",
             marginLeft: 10
         },
         inputCheckbox: {
-            alignSelf: "center",
-            width: "5vh",
-            height: "5vh"
+            alignSelf: "flex-start",
+            width: "2vh",
+            height: "2vh"
         },
         inputDiv: {
-            margin: 10,
+            margin: 2,
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between",
-            marginBottom: 20,
+            marginBottom: 5,
         },
         submitDiv: {
-            justifyContent: "center",
+            margin: "auto"
         },
     }
 
@@ -107,38 +107,40 @@ const AddTransaction = () => {
     return(
         <div style = {styles.container}>
             <form style = {styles.form} onSubmit={handleSubmit}>
-                <div style = {styles.inputDiv}>
-                    <label htmlFor= "Date">Date: </label>
-                    <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange}/>
-                </div>
-                
-                <div style = {styles.inputDiv}>
-                    <label htmlFor= "description">Description: </label>
-                    <input style = {styles.input} type = "text" id = "description" name = "description" value = {transaction.description} onChange = {handleChange}/>
-                </div>
-                
-                <div style = {styles.inputDiv}>
-                    <label htmlFor= "amount">Amount: </label>
-                    <div style = {styles.currencyContainer}>
-                        <span style={styles.currencySybmol}>$</span>
-                        <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {transaction.amount} 
-                            onChange = {handleChange}
-                            onKeyDown = {event => ["e","-","="].includes(event.key) && event.preventDefault()}
-                            />
+                <div>
+                    <div style = {styles.inputDiv}>
+                        <label htmlFor= "Date">Date: </label>
+                        <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange}/>
+                    </div>
+                    
+                    <div style = {styles.inputDiv}>
+                        <label htmlFor= "description">Description: </label>
+                        <input style = {styles.input} type = "text" id = "description" name = "description" value = {transaction.description} onChange = {handleChange}/>
+                    </div>
+                    
+                    <div style = {styles.inputDiv}>
+                        <label htmlFor= "amount">Amount: </label>
+                        <div style = {styles.currencyContainer}>
+                            <span style={styles.currencySybmol}>$</span>
+                            <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {transaction.amount} 
+                                onChange = {handleChange}
+                                onKeyDown = {event => ["e","-","="].includes(event.key) && event.preventDefault()}
+                                />
+                        </div>
+                    </div>
+
+                    <div style = {styles.inputDiv}>
+                        <label htmlFor= "income">Income: </label>
+                        <input style = {styles.inputCheckbox} type = "checkbox" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
                     </div>
                 </div>
-
-                <div style = {styles.inputDiv}>
-                    <label htmlFor= "income">Income: </label>
-                    <input style = {styles.inputCheckbox} type = "checkbox" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
-                </div>
                 
-                <div className = "submitDiv">
-                    <input type = "submit" id = "submitAdd" name="submitAdd" value = "submit" />
+                <div style={styles.submitDiv} >
+                    <input type = "submit" id = "submitEdit" name="submitEdit" value = "submit" />
                 </div>
             </form>
         </div>
     )
 }
 
-export default AddTransaction
+export default EditTransaction

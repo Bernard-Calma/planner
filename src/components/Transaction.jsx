@@ -1,9 +1,10 @@
 import { useState } from "react"
+import EditTransaction from "../containers/EditTransaction"
 
 const Transaction = (props) => {
     
     const [transaction, setTransaction] = useState(props.transaction)
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(true)
     const styles = {
         container: {
             display: "flex",
@@ -32,7 +33,7 @@ const Transaction = (props) => {
             {
                 show &&
                 <div>
-                    menu
+                    <EditTransaction />
                 </div>
             }
             

@@ -59,6 +59,12 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 20px;
 }
 
+#submitEdit {
+  font-size: larger;
+  background-color: White;
+  border-radius: 20px;
+}
+
 /* Transcations Container */
 .transactionsContainer::-webkit-scrollbar {
   display: none;
