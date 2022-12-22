@@ -9,7 +9,7 @@ const AddTransaction = () => {
         id: 0,
         date: "",
         amount: "$",
-        income: true,
+        type: null,
         description: ""
     })
 
@@ -104,17 +104,22 @@ const AddTransaction = () => {
         navigate("/transactions")
     }
 
+    const handleOptionChange = (event) => {
+        let { name, value} = event.target
+        console.log( {name, value})
+    }
+
     return(
         <div style = {styles.container}>
             <form style = {styles.form} onSubmit={handleSubmit}>
                 <div style = {styles.inputDiv}>
                     <label htmlFor= "Date">Date: </label>
-                    <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange}/>
+                    <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange} required/>
                 </div>
                 
                 <div style = {styles.inputDiv}>
                     <label htmlFor= "description">Description: </label>
-                    <input style = {styles.input} type = "text" id = "description" name = "description" value = {transaction.description} onChange = {handleChange}/>
+                    <input style = {styles.input} type = "text" id = "description" name = "description" value = {transaction.description} onChange = {handleChange} required/>
                 </div>
                 
                 <div style = {styles.inputDiv}>
@@ -124,20 +129,21 @@ const AddTransaction = () => {
                         <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {transaction.amount} 
                             onChange = {handleChange}
                             onKeyDown = {event => ["e","-","="].includes(event.key) && event.preventDefault()}
+                            required
                             />
                     </div>
                 </div>
 
                 <div style = {styles.inputDiv}>
                     <label htmlFor= "income">Income: </label>
-                    <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                    <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "income" value = "income" onChange = {handleOptionChange} required/>
                     <label htmlFor="expense">Expense: </label>
-                    <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                    <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "income" value = "expense" onChange = {handleOptionChange} required/>
                    
                 </div>
                 
                 <div className = "submitDiv">
-                    <input type = "submit" id = "submitAdd" name="submitAdd" value = "submit" />
+                    <input type = "submit" id = "submitAdd" name="submitAdd" value = "submit"/>
                 </div>
             </form>
         </div>
