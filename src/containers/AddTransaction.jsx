@@ -9,7 +9,7 @@ const AddTransaction = () => {
         id: 0,
         date: "",
         amount: "",
-        type: null,
+        type: "",
         description: ""
     })
     const styles = {
@@ -85,13 +85,11 @@ const AddTransaction = () => {
     }
 
     const handleChange = (event) => {
-        
         event.preventDefault()
         if(event.target.name === "amount" && event.target.value > 9000000000) return
         if(event.target.value.indexOf('.') > -1 && (event.target.value.indexOf('.') + 3 < event.target.value.length) ) return
         setTransaction({...transaction, [event.target.name]: event.target.value})
         // console.log(event.target.value)
-        
     }
 
     const handleSubmit = (event) => {

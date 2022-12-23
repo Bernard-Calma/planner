@@ -4,7 +4,7 @@ import EditTransaction from "../containers/EditTransaction"
 const Transaction = (props) => {
     
     const [transaction, setTransaction] = useState(props.transaction)
-    const [show, setShow] = useState(false)
+    const [showEdit, setShow] = useState(false)
     const styles = {
         container: {
             display: "flex",
@@ -24,7 +24,7 @@ const Transaction = (props) => {
     }
 
     const handleClick = () => {
-        setShow(!show)
+        setShow(!showEdit)
     }
 
     const handleChange = (event) => {
@@ -40,13 +40,13 @@ const Transaction = (props) => {
     return (
         <div>
             <div style = {styles.container} onClick = {handleClick}>
-                <p style={styles.title}>{new Date(transaction.date).toISOString().slice(0, -5)}</p>
+                <p style={styles.title}>{new Date(transaction.date).toLocaleDateString().slice(0, -5)}</p>
                 <p style={styles.title}>${transaction.amount.toFixed(2)}</p>
                 <p style={styles.title}>{transaction.description}</p>
-                <p style={styles.title}>{transaction.income ? "Income" : "Expense"}</p>
+                <p style={styles.title}>{transaction.type === "income" ? "Income" : "Expense"}</p>
             </div>
             {
-                show &&
+                showEdit &&
                 <div>
                     <EditTransaction 
                         transaction = {transaction}
