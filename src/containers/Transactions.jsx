@@ -84,10 +84,16 @@ const Transactions = (props) => {
                                 handleShowEdit = {props.handleShowEdit}
                                 showEdit = {props.showEdit}
                             />
-                            <EditTransaction 
-                                transaction = {transaction}
-                                editTransaction = {editTransaction}
-                            />
+                            {
+                            props.showEdit.show && props.showEdit.id === transaction.id &&
+                            <div>
+                                <EditTransaction 
+                                    transaction = {transaction}
+                                    editTransaction = {editTransaction}
+                                />
+                            </div>
+            }
+                            
                         </>
                     )
                 }
