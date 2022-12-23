@@ -40,7 +40,7 @@ const Transaction = (props) => {
     return (
         <div>
             <div style = {styles.container} onClick = {handleClick}>
-                <p style={styles.title}>{new Date(transaction.date).toLocaleDateString().slice(0, -5)}</p>
+                <p style={styles.title}>{`${new Date(transaction.date).getUTCMonth()} / ${new Date(transaction.date).getUTCDate()}`}</p>
                 <p style={styles.title}>${transaction.amount.toFixed(2)}</p>
                 <p style={styles.title}>{transaction.description}</p>
                 <p style={styles.title}>{transaction.type === "income" ? "Income" : "Expense"}</p>
