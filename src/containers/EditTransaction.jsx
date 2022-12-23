@@ -79,7 +79,7 @@ const EditTransaction = (props) => {
 
     return(
         <div style = {styles.container} className = "editContainer">
-            <form style = {styles.form} onSubmit={event => props.handleSubmit(event, props.transaction)}>
+            <form style = {styles.form}>
                 <div>
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "Date">Date: </label>
@@ -113,9 +113,9 @@ const EditTransaction = (props) => {
                     </div>
                 </div>
                 
-                {/* <div style={styles.submitDiv} >
-                    <input type = "submit" id = "submitEdit" name="submitEdit" value = "submit" />
-                </div> */}
+                <div style={styles.submitDiv} >
+                    <input type = "submit" id = "submitEdit" name="submitEdit" value = "Delete" />
+                </div>
             </form>
         </div>
     )

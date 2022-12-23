@@ -47,6 +47,10 @@ const Transactions = (props) => {
         setTransactionList(newTranscationList)
     }
 
+    const deleteTransaction = (id) => {
+        setTransactionList(transactionList.filter(transaction => transaction.id !== id))
+    }
+
     useEffect( ()=>{
         // console.log(transactionList)
         setSummary(()=>{
@@ -85,14 +89,14 @@ const Transactions = (props) => {
                                 showEdit = {props.showEdit}
                             />
                             {
-                            props.showEdit.show && props.showEdit.id === transaction.id &&
-                            <div>
-                                <EditTransaction 
-                                    transaction = {transaction}
-                                    editTransaction = {editTransaction}
+                                props.showEdit.show && props.showEdit.id === transaction.id 
+                                && <EditTransaction 
+                                        key = {`Edit: ${transaction.id}`}
+                                        transaction = {transaction}
+                                        editTransaction = {editTransaction}
+                                        deleteTransaction = {deleteTransaction}
                                 />
-                            </div>
-            }
+                            }
                             
                         </>
                     )
