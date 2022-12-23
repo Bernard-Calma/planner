@@ -2,14 +2,10 @@ import { NavLink } from "react-router-dom"
 import '../App.css'
 const NavBar = (props) => {
     return (
-        <div 
-            style={styles.container}
-            className = "navBar"
-            hidden = {props.navOpen}
-        >
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="planner">Planner</NavLink>
-            <NavLink to="transactions">Transactions</NavLink>
+        <div style={styles.container}>
+            <NavLink to="/" onClick={props.openNav}>Home</NavLink>
+            <NavLink to="planner" onClick={props.openNav}>Planner</NavLink>
+            <NavLink to="transactions" onClick={props.openNav}>Transactions</NavLink>
         </div>
     )
 }

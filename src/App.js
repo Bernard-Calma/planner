@@ -9,21 +9,24 @@ import Planner from './containers/Planner';
 import Transactions from './containers/Transactions';
 
 const App = () => {
-  const [navOpen, setNavOpen] = useState(true)
+  const [navOpen, setNavOpen] = useState(false)
   const [user, setUser] = useState({
     user: {ObjectID: "Guest"},
     username: "Guest"
   })
+  
 
   const openNav = () => {
     setNavOpen(!navOpen)
   }
   return(
     <div style = {styles.container} className = "appContainer">
-      <NavBar 
-        navOpen = {navOpen}
-      />
-      <div style = {styles.mainContainer} onTouchStart = {() => setNavOpen(true)} onMouseDown = {() => setNavOpen(true)}>
+      {
+        navOpen &&
+        <NavBar openNav = {openNav}/>
+      }
+      
+      <div style = {styles.mainContainer} onTouchStart = {() => setNavOpen(false)} onMouseDown = {() => setNavOpen(false)}>
         <Header openNav = {openNav}/>
         <Routes>
           <Route path="/" element = {<LandingPage />} />
