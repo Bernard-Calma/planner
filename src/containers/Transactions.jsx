@@ -37,7 +37,7 @@ const Transactions = (props) => {
             let expense = 0
             let balance = 0
             transactionList.forEach(transaction => {
-                if(transaction.income) income += transaction.amount 
+                if(transaction.type === "income") income += transaction.amount 
                 else expense += transaction.amount
             })
             balance = income - expense

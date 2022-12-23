@@ -12,7 +12,6 @@ const AddTransaction = () => {
         type: null,
         description: ""
     })
-    console.log(transaction)
     const styles = {
         container: {
             display: "flex",
@@ -102,6 +101,7 @@ const AddTransaction = () => {
         const transactionToAdd = {...transaction, amount: parseInt(transaction.amount.slice(0)), date: transaction.date, id: transactions.length}
         transactions.push(transactionToAdd)
         navigate("/transactions")
+        console.log(transaction)
     }
 
     const handleOptionChange = (event) => {
