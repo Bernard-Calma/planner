@@ -73,26 +73,33 @@ const EditTransaction = (props) => {
         },
     }
 
+    const handleChange = (event) => {
+        props.editTransaction(event, props.transaction)
+    }
+
     return(
         <div style = {styles.container} className = "editContainer">
             <form style = {styles.form} onSubmit={event => props.handleSubmit(event, props.transaction)}>
                 <div>
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "Date">Date: </label>
-                        <input style = {styles.input} type = "date" id = "date" name = "date" value = {props.transaction.date} onChange = {props.handleChange}/>
+                        <input style = {styles.input} type = "date" id = "date" name = "date" value = {props.transaction.date} onChange = {handleChange}/>
                     </div>
                     
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "description">Description: </label>
-                        <input style = {styles.input} type = "text" id = "description" name = "description" value = {props.transaction.description} onChange = {props.handleChange}/>
+                        <input style = {styles.input} type = "text" id = "description" name = "description" value = {props.transaction.description} onChange = {handleChange}/>
                     </div>
                     
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "amount">Amount: </label>
                         <div style = {styles.currencyContainer}>
                             <span style={styles.currencySybmol}>$</span>
-                            <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {props.transaction.amount} 
-                                onChange = {props.handleChange}
+                            <input style = {styles.currencyInput} 
+                                patern="[0-9]{2}" type = "number" id = "amount" name = "amount" 
+                                max = "999"
+                                value = {props.transaction.amount} 
+                                onChange = {handleChange}
                                 onKeyDown = {event => ["e","-","="].includes(event.key) && event.preventDefault()}
                                 />
                         </div>
@@ -100,15 +107,15 @@ const EditTransaction = (props) => {
 
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "income">Income: </label>
-                        <input  style = {styles.inputCheckbox} type = "radio" id = "income" name = "type" value = "income" onChange = {props.handleChange} checked = {props.transaction.type === 'income'}/>
+                        <input  style = {styles.inputCheckbox} type = "radio" id = "income" name = "type" value = "income" onChange = {handleChange} checked = {props.transaction.type === 'income'}/>
                         <label htmlFor="expense">Expense: </label>
-                        <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "type" value = "expense" onChange = {props.handleChange} checked = {props.transaction.type === 'expense'}/>
+                        <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "type" value = "expense" onChange = {handleChange} checked = {props.transaction.type === 'expense'}/>
                     </div>
                 </div>
                 
-                <div style={styles.submitDiv} >
+                {/* <div style={styles.submitDiv} >
                     <input type = "submit" id = "submitEdit" name="submitEdit" value = "submit" />
-                </div>
+                </div> */}
             </form>
         </div>
     )

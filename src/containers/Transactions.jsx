@@ -3,6 +3,7 @@ import Summary from "../components/Summary"
 import Transaction from "../components/Transaction"
 import TransactionTitles from "../components/TransactionTitles"
 import transactions from "../models/transcations"
+import EditTransaction from "./EditTransaction"
 
 const Transactions = (props) => {
 
@@ -31,12 +32,19 @@ const Transactions = (props) => {
         },
     }
 
-    const handleSubmit = (event, transaction) => {
-        event.preventDefault()
-        // console.log("Transaction: ", transaction)
-        // console.log("Transactions: ", transactions)
-        // console.log(transactionList)
-        setTransactionList(transactionList.map(trans => trans.id === transaction.id? transaction: trans))
+    const editTransaction = (event, updatedTransaction) => {
+        let { name, value } = event.target 
+        let newTranscationList = transactionList.map(transaction => { if (transaction.id !== updatedTransaction.id) return transaction
+            else {
+                if(value.indexOf('.') > -1 && (value.indexOf('.') + 3 < value.length) ) return
+                if(name === "amount") {
+                    if (value > 9999999) return transaction
+                    return {...transaction, [name]: parseInt(value)}
+                } else return {...transaction, [name]: value}
+            }
+            
+            })
+        setTransactionList(newTranscationList)
     }
 
     useEffect( ()=>{
@@ -68,14 +76,19 @@ const Transactions = (props) => {
                 <TransactionTitles />
                 {
                     
-                    transactionList.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse().map((transaction) => 
-                        <Transaction 
-                        key = {transaction.id}
-                        transaction = {transaction}
-                        handleShowEdit = {props.handleShowEdit}
-                        showEdit = {props.showEdit}
-                        handleSubmit = {handleSubmit}
-                        />
+                    transactionList.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse().map(transaction=> 
+                        <>
+                            <Transaction 
+                                key = {transaction.id}
+                                transaction = {transaction}
+                                handleShowEdit = {props.handleShowEdit}
+                                showEdit = {props.showEdit}
+                            />
+                            <EditTransaction 
+                                transaction = {transaction}
+                                editTransaction = {editTransaction}
+                            />
+                        </>
                     )
                 }
             </div>
