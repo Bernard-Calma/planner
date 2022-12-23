@@ -30,6 +30,15 @@ const Transactions = (props) => {
             overflow: "scroll"
         },
     }
+
+    const handleSubmit = (event, transaction) => {
+        event.preventDefault()
+        // console.log("Transaction: ", transaction)
+        // console.log("Transactions: ", transactions)
+        console.log(transactionList)
+        setTransactionList(transactionList.map(trans => trans.id === transaction.id? transaction: trans))
+    }
+
     useEffect( ()=>{
         // console.log(transactionList)
         setSummary(()=>{
@@ -48,7 +57,7 @@ const Transactions = (props) => {
             };
         })
 
-    },[])
+    },[transactionList])
     // console.log("Summary Upper", summary)
     return(
         <div style = {styles.container}> 
@@ -65,6 +74,7 @@ const Transactions = (props) => {
                         transaction = {transaction}
                         handleShowEdit = {props.handleShowEdit}
                         showEdit = {props.showEdit}
+                        handleSubmit = {handleSubmit}
                         />
                     )
                 }

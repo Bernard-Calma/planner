@@ -21,18 +21,18 @@ const App = () => {
   }
 
   const handleShowEdit = (id) => {
-    console.log("Handle Show Edit", showEdit)
+    // console.log("Handle Show Edit", showEdit)
     if (showEdit.id === id) setShow({id: "", show: false})
     else setShow({id: id, show: true} )
   }
 
   const hideNavEdit = () => {
-    console.log("Handle Nav Edit", showEdit)
+    // console.log("Handle Nav Edit", showEdit)
     setNavOpen(false)
-    if (showEdit.id !== "") setShow({
-      id: showEdit.id,
-      show: false
-    })
+    // if (showEdit.id !== "") setShow({
+    //   id: showEdit.id,
+    //   show: false
+    // })
   }
 
   return(

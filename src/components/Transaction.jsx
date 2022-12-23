@@ -46,6 +46,7 @@ const Transaction = (props) => {
                     <EditTransaction 
                         transaction = {transaction}
                         handleChange = {handleChange}
+                        handleSubmit = {props.handleSubmit}
                     />
                 </div>
             }

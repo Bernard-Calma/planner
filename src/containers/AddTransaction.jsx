@@ -89,7 +89,7 @@ const AddTransaction = () => {
         if(name === "amount" && value > 9000000000) return
         if(value.indexOf('.') > -1 && (value.indexOf('.') + 3 < value.length) ) return
         setTransaction({...transaction, [name]: value})
-        console.log(transaction)
+        // console.log(transaction)
     }
 
     const handleSubmit = (event) => {
@@ -99,7 +99,7 @@ const AddTransaction = () => {
         const transactionToAdd = {...transaction, amount: parseInt(transaction.amount), date: transaction.date, id: transactions.length}
         transactions.push(transactionToAdd)
         navigate("/transactions")
-        console.log(transaction)
+        // console.log(transaction)
     }
 
     return(

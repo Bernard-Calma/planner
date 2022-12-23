@@ -1,17 +1,5 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import transactions from "../models/transcations"
 
 const EditTransaction = (props) => {
-    const navigate = useNavigate()
-
-    const [transaction, setTransaction] = useState({
-        id: 0,
-        date: "",
-        amount: "",
-        income: true,
-        description: ""
-    })
 
     const styles = {
         container: {
@@ -85,18 +73,9 @@ const EditTransaction = (props) => {
         },
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        // console.log("Transaction: ", transaction)
-        // console.log("Transactions: ", transactions)
-        const transactionToAdd = {...transaction, amount: parseInt(transaction.amount.slice(1)), date: transaction.date, }
-        transactions.push(transactionToAdd)
-        navigate("/transactions")
-    }
-
     return(
         <div style = {styles.container} className = "editContainer">
-            <form style = {styles.form} onSubmit={handleSubmit}>
+            <form style = {styles.form} onSubmit={event => props.handleSubmit(event, props.transaction)}>
                 <div>
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "Date">Date: </label>
