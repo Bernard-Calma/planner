@@ -2,13 +2,13 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import transactions from "../models/transcations"
 
-const EditTransaction = () => {
+const EditTransaction = (props) => {
     const navigate = useNavigate()
 
     const [transaction, setTransaction] = useState({
         id: 0,
         date: "",
-        amount: "$",
+        amount: "",
         income: true,
         description: ""
     })
@@ -67,7 +67,7 @@ const EditTransaction = () => {
             fontSize: "2vh", 
             width: "50%",
             alignSelf: "center",
-            marginLeft: 10
+            marginLeft: 10,
         },
         inputCheckbox: {
             alignSelf: "flex-start",
@@ -110,20 +110,20 @@ const EditTransaction = () => {
                 <div>
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "Date">Date: </label>
-                        <input style = {styles.input} type = "date" id = "date" name = "date" value = {transaction.date} onChange = {handleChange}/>
+                        <input style = {styles.input} type = "date" id = "date" name = "date" value = {props.transaction.date} onChange = {props.handleChange}/>
                     </div>
                     
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "description">Description: </label>
-                        <input style = {styles.input} type = "text" id = "description" name = "description" value = {transaction.description} onChange = {handleChange}/>
+                        <input style = {styles.input} type = "text" id = "description" name = "description" value = {props.transaction.description} onChange = {props.handleChange}/>
                     </div>
                     
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "amount">Amount: </label>
                         <div style = {styles.currencyContainer}>
                             <span style={styles.currencySybmol}>$</span>
-                            <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {transaction.amount} 
-                                onChange = {handleChange}
+                            <input style = {styles.currencyInput} patern="[0-9]" type = "number" id = "amount" name = "amount" value = {props.transaction.amount} 
+                                onChange = {props.handleChange}
                                 onKeyDown = {event => ["e","-","="].includes(event.key) && event.preventDefault()}
                                 />
                         </div>
@@ -131,9 +131,9 @@ const EditTransaction = () => {
 
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "income">Income: </label>
-                        <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                        <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "income" value = "income" onChange = {handleChange}/>
                         <label htmlFor="expense">Expense: </label>
-                        <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "income" value = {transaction.income} onChange = {handleChange}/>
+                        <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "income" value = "expense" onChange = {handleChange}/>
                     </div>
                 </div>
                 

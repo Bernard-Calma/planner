@@ -19,11 +19,22 @@ const Transaction = (props) => {
             height: "inherit",
             textAlign: "center",
             margin: 0,
+            overflow: "hidden"
         },
     }
 
     const handleClick = () => {
         setShow(!show)
+    }
+
+    const handleChange = (event) => {
+        event.preventDefault()
+        if(event.target.value.indexOf('.') > -1 && (event.target.value.indexOf('.') + 3 < event.target.value.length) ) return
+        if(event.target.name === "amount") {
+            if (event.target.value > 9000000000) return
+            setTransaction({...transaction, [event.target.name]: parseInt(event.target.value)})
+        } else setTransaction({...transaction, [event.target.name]: event.target.value})
+        // console.log(event.target.value)
     }
 
     return (
@@ -37,7 +48,10 @@ const Transaction = (props) => {
             {
                 show &&
                 <div>
-                    <EditTransaction />
+                    <EditTransaction 
+                        transaction = {transaction}
+                        handleChange = {handleChange}
+                    />
                 </div>
             }
             
