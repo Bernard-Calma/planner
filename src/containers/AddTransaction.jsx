@@ -28,7 +28,7 @@ const AddTransaction = () => {
         },
         currencyContainer: {
             border: "1px solid",
-            height: "5vh",
+            height: "80%",
             width: "100%",
             display: "flex",
             alignSelf: "center",
@@ -49,7 +49,7 @@ const AddTransaction = () => {
         currencySybmol: {
             position: "relative", 
             border: "unset",
-            fontSize: "3vw",
+            fontSize: "80%",
             alignSelf: "center"
             // paddingBottom: 7,
             // paddingTop: 25,
@@ -57,13 +57,13 @@ const AddTransaction = () => {
         },
         form: {
             display: "flex",
-            height: "80vh",
+            height: "90%",
             flexDirection: "column",
             justifyContent: "space-between",
             fontSize: "5vw"
         },
         input: {
-            fontSize: "3vh", 
+            fontSize: "80%", 
             width: "50%",
             alignSelf: "center",
             marginLeft: 10
@@ -99,7 +99,7 @@ const AddTransaction = () => {
         event.preventDefault()
         // console.log("Transaction: ", transaction)
         // console.log("Transactions: ", transactions)
-        const transactionToAdd = {...transaction, amount: parseInt(transaction.amount), date: transaction.date, }
+        const transactionToAdd = {...transaction, amount: parseInt(transaction.amount.slice(0)), date: transaction.date, id: transactions.length}
         transactions.push(transactionToAdd)
         navigate("/transactions")
     }

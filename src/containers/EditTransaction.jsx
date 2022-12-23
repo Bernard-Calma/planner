@@ -99,7 +99,7 @@ const EditTransaction = () => {
         event.preventDefault()
         // console.log("Transaction: ", transaction)
         // console.log("Transactions: ", transactions)
-        const transactionToAdd = {...transaction, amount: parseInt(transaction.amount), date: transaction.date, }
+        const transactionToAdd = {...transaction, amount: parseInt(transaction.amount.slice(1)), date: transaction.date, }
         transactions.push(transactionToAdd)
         navigate("/transactions")
     }
