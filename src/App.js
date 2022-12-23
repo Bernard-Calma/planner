@@ -10,15 +10,31 @@ import Transactions from './containers/Transactions';
 
 const App = () => {
   const [navOpen, setNavOpen] = useState(false)
+  const [showEdit, setShow] = useState({id: "", show: false})
   const [user, setUser] = useState({
     user: {ObjectID: "Guest"},
     username: "Guest"
   })
-  
 
   const openNav = () => {
     setNavOpen(!navOpen)
   }
+
+  const handleShowEdit = (id) => {
+    console.log("Handle Show Edit", showEdit)
+    if (showEdit.id === id) setShow({id: "", show: false})
+    else setShow({id: id, show: true} )
+  }
+
+  const hideNavEdit = () => {
+    console.log("Handle Nav Edit", showEdit)
+    setNavOpen(false)
+    if (showEdit.id !== "") setShow({
+      id: showEdit.id,
+      show: false
+    })
+  }
+
   return(
     <div style = {styles.container} className = "appContainer">
       {
@@ -26,12 +42,22 @@ const App = () => {
         <NavBar openNav = {openNav}/>
       }
       
-      <div style = {styles.mainContainer} onTouchStart = {() => setNavOpen(false)} onMouseDown = {() => setNavOpen(false)}>
+      <div 
+        style = {styles.mainContainer} 
+        onTouchStart = {hideNavEdit} 
+        onMouseDown = {hideNavEdit}
+      >
         <Header openNav = {openNav}/>
         <Routes>
           <Route path="/" element = {<LandingPage />} />
           <Route path="planner" element = {<Planner />} /> 
-          <Route path="transactions" element = {<Transactions user = {user}/>} />
+          <Route path="transactions" element = {
+            <Transactions 
+              user = {user} 
+              handleShowEdit = {handleShowEdit}
+              showEdit = {showEdit}
+              />
+          } />
           <Route path="transactions/add" element = {<AddTransaction />} />
         </Routes>
       </div>

@@ -62,7 +62,10 @@ const Transactions = (props) => {
                     transactionList.sort((a, b) => new Date(b.date) - new Date(a.date)).reverse().map((transaction) => 
                         <Transaction 
                         key = {transaction.id}
-                        transaction = {transaction}/>
+                        transaction = {transaction}
+                        handleShowEdit = {props.handleShowEdit}
+                        showEdit = {props.showEdit}
+                        />
                     )
                 }
             </div>

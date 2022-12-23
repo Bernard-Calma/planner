@@ -4,7 +4,6 @@ import EditTransaction from "../containers/EditTransaction"
 const Transaction = (props) => {
     
     const [transaction, setTransaction] = useState(props.transaction)
-    const [showEdit, setShow] = useState(false)
     const styles = {
         container: {
             display: "flex",
@@ -23,10 +22,6 @@ const Transaction = (props) => {
         },
     }
 
-    const handleClick = () => {
-        setShow(!showEdit)
-    }
-
     const handleChange = (event) => {
         let { name, value} = event.target
         if(value.indexOf('.') > -1 && (value.indexOf('.') + 3 < value.length) ) return
@@ -39,14 +34,14 @@ const Transaction = (props) => {
 
     return (
         <div>
-            <div style = {styles.container} onClick = {handleClick}>
+            <div style = {styles.container} onClick = {() => props.handleShowEdit(props.transaction.id)}>
                 <p style={styles.title}>{`${new Date(transaction.date).toUTCString().slice(0,11)}`}</p>
                 <p style={styles.title}>${transaction.amount.toFixed(2)}</p>
                 <p style={styles.title}>{transaction.description}</p>
                 <p style={styles.title}>{transaction.type === "income" ? "Income" : "Expense"}</p>
             </div>
             {
-                showEdit &&
+                props.showEdit.show && props.showEdit.id === props.transaction.id &&
                 <div>
                     <EditTransaction 
                         transaction = {transaction}
