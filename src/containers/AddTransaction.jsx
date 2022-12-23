@@ -85,11 +85,11 @@ const AddTransaction = () => {
     }
 
     const handleChange = (event) => {
-        event.preventDefault()
-        if(event.target.name === "amount" && event.target.value > 9000000000) return
-        if(event.target.value.indexOf('.') > -1 && (event.target.value.indexOf('.') + 3 < event.target.value.length) ) return
-        setTransaction({...transaction, [event.target.name]: event.target.value})
-        // console.log(event.target.value)
+        let { name, value} = event.target
+        if(name === "amount" && value > 9000000000) return
+        if(value.indexOf('.') > -1 && (value.indexOf('.') + 3 < value.length) ) return
+        setTransaction({...transaction, [name]: value})
+        console.log(transaction)
     }
 
     const handleSubmit = (event) => {
@@ -100,11 +100,6 @@ const AddTransaction = () => {
         transactions.push(transactionToAdd)
         navigate("/transactions")
         console.log(transaction)
-    }
-
-    const handleOptionChange = (event) => {
-        let { name, value} = event.target
-        setTransaction({...transaction, [name]: value})
     }
 
     return(
@@ -134,9 +129,9 @@ const AddTransaction = () => {
 
                 <div style = {styles.inputDiv}>
                     <label htmlFor= "income">Income: </label>
-                    <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "type" value = "income" onChange = {handleOptionChange} required/>
+                    <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "type" value = "income" onChange = {handleChange} required/>
                     <label htmlFor="expense">Expense: </label>
-                    <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "type" value = "expense" onChange = {handleOptionChange} required/>
+                    <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "type" value = "expense" onChange = {handleChange} required/>
                    
                 </div>
                 
