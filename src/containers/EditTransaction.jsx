@@ -85,16 +85,6 @@ const EditTransaction = (props) => {
         },
     }
 
-    const handleChange = (event) => {
-        
-        event.preventDefault()
-        if(event.target.name === "amount" && event.target.value > 9000000000) return
-        if(event.target.value.indexOf('.') > -1 && (event.target.value.indexOf('.') + 3 < event.target.value.length) ) return
-        setTransaction({...transaction, [event.target.name]: event.target.value})
-        // console.log(event.target.value)
-        
-    }
-
     const handleSubmit = (event) => {
         event.preventDefault()
         // console.log("Transaction: ", transaction)
@@ -131,9 +121,9 @@ const EditTransaction = (props) => {
 
                     <div style = {styles.inputDiv}>
                         <label htmlFor= "income">Income: </label>
-                        <input style = {styles.inputCheckbox} type = "radio" id = "income" name = "income" value = "income" onChange = {handleChange}/>
+                        <input  style = {styles.inputCheckbox} type = "radio" id = "income" name = "type" value = "income" onChange = {props.handleChange} checked = {props.transaction.type === 'income'}/>
                         <label htmlFor="expense">Expense: </label>
-                        <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "income" value = "expense" onChange = {handleChange}/>
+                        <input style = {styles.inputCheckbox} type = "radio" id = "expense" name = "type" value = "expense" onChange = {props.handleChange} checked = {props.transaction.type === 'expense'}/>
                     </div>
                 </div>
                 

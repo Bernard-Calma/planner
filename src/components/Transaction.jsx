@@ -28,19 +28,19 @@ const Transaction = (props) => {
     }
 
     const handleChange = (event) => {
-        event.preventDefault()
-        if(event.target.value.indexOf('.') > -1 && (event.target.value.indexOf('.') + 3 < event.target.value.length) ) return
-        if(event.target.name === "amount") {
-            if (event.target.value > 9000000000) return
-            setTransaction({...transaction, [event.target.name]: parseInt(event.target.value)})
-        } else setTransaction({...transaction, [event.target.name]: event.target.value})
+        let { name, value} = event.target
+        if(value.indexOf('.') > -1 && (value.indexOf('.') + 3 < value.length) ) return
+        if(name === "amount") {
+            if (value > 9000000000) return
+            setTransaction({...transaction, [name]: parseInt(value)})
+        } else setTransaction({...transaction, [name]: value})
         // console.log(event.target.value)
     }
 
     return (
         <div>
             <div style = {styles.container} onClick = {handleClick}>
-                <p style={styles.title}>{`${new Date(transaction.date).getUTCMonth()} / ${new Date(transaction.date).getUTCDate()}`}</p>
+                <p style={styles.title}>{`${new Date(transaction.date).toUTCString().slice(0,11)}`}</p>
                 <p style={styles.title}>${transaction.amount.toFixed(2)}</p>
                 <p style={styles.title}>{transaction.description}</p>
                 <p style={styles.title}>{transaction.type === "income" ? "Income" : "Expense"}</p>
