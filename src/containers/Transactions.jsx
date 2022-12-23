@@ -35,7 +35,7 @@ const Transactions = (props) => {
         event.preventDefault()
         // console.log("Transaction: ", transaction)
         // console.log("Transactions: ", transactions)
-        console.log(transactionList)
+        // console.log(transactionList)
         setTransactionList(transactionList.map(trans => trans.id === transaction.id? transaction: trans))
     }
 
