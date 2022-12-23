@@ -8,7 +8,7 @@ const AddTransaction = () => {
     const [transaction, setTransaction] = useState({
         id: 0,
         date: "",
-        amount: "$",
+        amount: "",
         type: null,
         description: ""
     })
@@ -98,7 +98,7 @@ const AddTransaction = () => {
         event.preventDefault()
         // console.log("Transaction: ", transaction)
         // console.log("Transactions: ", transactions)
-        const transactionToAdd = {...transaction, amount: parseInt(transaction.amount.slice(0)), date: transaction.date, id: transactions.length}
+        const transactionToAdd = {...transaction, amount: parseInt(transaction.amount), date: transaction.date, id: transactions.length}
         transactions.push(transactionToAdd)
         navigate("/transactions")
         console.log(transaction)
