@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddTransaction from './containers/AddTransaction';
+import Bills from './containers/Bills';
 import Header from './containers/Header';
 import LandingPage from './containers/LandingPage';
 import NavBar from './containers/NavBar';
@@ -59,6 +60,7 @@ const App = () => {
               />
           } />
           <Route path="transactions/add" element = {<AddTransaction />} />
+          <Route path = "bills" element = {<Bills />} />
         </Routes>
       </div>
     </div>

@@ -6,6 +6,7 @@ const NavBar = (props) => {
             <NavLink to="/" onClick={props.openNav}>Home</NavLink>
             <NavLink to="planner" onClick={props.openNav}>Planner</NavLink>
             <NavLink to="transactions" onClick={props.openNav}>Transactions</NavLink>
+            <NavLink to="bills" onClick={props.openNav}>Bills</NavLink>
         </div>
     )
 }
