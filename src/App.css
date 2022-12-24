@@ -74,3 +74,14 @@ input[type=number]::-webkit-outer-spin-button {
 .editContainer {
   color: red
 }
+
+
+/* BILLS */
+/* BILLS CONTAINER */
+.billsTtitleContainer > h2 {
+  border: solid black;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
